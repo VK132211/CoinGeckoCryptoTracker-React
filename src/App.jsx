@@ -1,14 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import CoinTable from "./components/CoinTable/CoinTable";
+import Navbar from "./components/Navbar/Navbar";
+import Banner from "./components/Banner/Banner";
+import { currencyContext } from "./context/currencyContext";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [currency, setCurrency] = useState('usd');
   return (
-   <h1 className='font-bold text-ellipsis underline'>Hello</h1>
-  )
+    <>
+    <currencyContext.Provider value={{ currency, setCurrency }}>
+      <Navbar />
+      <Banner />
+      <CoinTable />
+    </currencyContext.Provider>
+    </>
+  );
+ 
 }
 
-export default App
+export default App;
